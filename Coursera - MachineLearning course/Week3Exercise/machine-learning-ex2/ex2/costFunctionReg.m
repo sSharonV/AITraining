@@ -29,7 +29,7 @@ for i = 1:m;
     _1_Yi = (1-y(i))*log(1-sigmoid((theta')*X(i,:)'));
     step_iR += _Yi - _1_Yi;
     end
-for i = 1:length(size(theta,1));
+for i = 2:(size(theta,1));
     step_jThe += theta(i,1).^2; 
     end
 J = (1/m)*step_iR + (lambda/(2*m))*step_jThe;
