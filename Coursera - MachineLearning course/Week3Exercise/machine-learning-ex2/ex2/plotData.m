@@ -12,17 +12,22 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% Find Indices of Positive and Negative Examples
+pos = find(y==1); neg = find(y == 0);
+% Plot Examples
+
+%	Plots the positive examples from X
+plot(X(pos, 1), X(pos, 2), 'k+','LineWidth', 2, ...
+'MarkerSize', 7);
 
 
-
-
-
-
-
+%	Plots the negative examples from X
+%	without the op "'MarkerFaceColor', 'y'," the circle is edge colored black
+%	with it the color is filled with yellow
+plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', ...
+'MarkerSize', 7);
 
 % =========================================================================
-
-
 
 hold off;
 
