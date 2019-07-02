@@ -144,6 +144,10 @@ fprintf('Expected value: 0.775 +/- 0.002\n\n');
 % Compute accuracy on our training set
 p = predict(theta, X);
 
+% p==y returnes vector with values that indicates a correct precidtion
+% double() - returnes double values for logisitic conditions
+% mean() - returns the avg' (in percents) instances of correct predictions
+%          in a given DataSet
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
 fprintf('Expected accuracy (approx): 89.0\n');
 fprintf('\n');
