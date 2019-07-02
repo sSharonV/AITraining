@@ -15,8 +15,8 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
-size(theta)
-size(X)
+%size(theta)
+%size(X)
 
 for i = 1:m;
     if sigmoid(theta'*(X(i,:))') >= 0.5
