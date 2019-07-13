@@ -1,0 +1,8 @@
+def func(n,max):
+    if(n==0 || max==0):
+        return;
+    print(max)
+    func(n-1,max)
+    return;
+
+func(2,3)

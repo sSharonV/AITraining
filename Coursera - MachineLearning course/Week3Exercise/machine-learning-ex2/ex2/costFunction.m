@@ -23,9 +23,6 @@ grad = zeros(size(theta));
 % theta (3*1), X(100*3), y(100*1)
 %            , X(i,:) = (1*3)
 step_iR = 0;
-%size(theta);
-%size(X);
-%size(y);
 for i = 1:m;
     _Yi = -y(i)*log(sigmoid((theta')*X(i,:)'));
     _1_Yi = (1-y(i))*log(1-sigmoid((theta')*X(i,:)'));
@@ -40,10 +37,6 @@ for j = 1:size(X,2);
         end
     grad(j) = (1/m)*(gradJ_sum);
     end
-
-
-
-
 % =============================================================
 
 end
