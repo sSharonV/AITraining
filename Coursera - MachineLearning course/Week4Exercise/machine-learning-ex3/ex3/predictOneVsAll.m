@@ -30,13 +30,27 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+%Non-Vectorized implementation for prediction calculations 
+%K = num_labels;
 
+%_t_pred_i = zeros(K,1);
+%for _ex = 1:m;
+%    for i = 1:K;
+%        _t_pred_i(i,:) = sigmoid(all_theta(i,:)*(X(_ex,:)'));
+%        end
+%    [a,b] = max(_t_pred_i, [], 1);
+%    p(_ex) = b;
+%    end
 
+%Vectorized implementation for prediction calculations 
+% To get every sigmoid function to apply on the multi. of theta to it's according
+% X input, in every cell of the matrix ->
+% sum(0=<i<=#inputs) -> X(1,i)*theta(i,l) == this equals to using x*theta'
+% so every raw will contain the output of sigma on each classifier prediction.
+% by using max on each raw ([], 2) - we will get the specific classifier index (1~10)
 
-
+[m,p] = max(sigmoid(X*all_theta'), [], 2);
 
 
 % =========================================================================
-
-
 end
