@@ -27,6 +27,7 @@ if size(X, 2) <= 3
     axis([30, 100, 30, 100])
 else
     % Here is the grid range
+    % linspace (base, limit, n) -> Return a row vector with n linearly spaced elements between base and limit
     u = linspace(-1, 1.5, 50);
     v = linspace(-1, 1.5, 50);
 
