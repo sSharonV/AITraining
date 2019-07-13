@@ -17,11 +17,6 @@ p = zeros(m, 1);
 
 %size(theta)
 %size(X)
-<<<<<<< HEAD
-% -> need for transportation to the matrices
-=======
-
->>>>>>> 93c3d2b04c651fffe8935cb043a7c88bc3e77825
 for i = 1:m;
     if sigmoid(theta'*(X(i,:))') >= 0.5
         p(i) = 1;

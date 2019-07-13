@@ -36,14 +36,48 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+% For debugging purposes
+%size(theta) = 4,1
+%size(X) = 5,4
+%size(y) = 5,1
 
+% Non-Vectorized implementation for cost function 
+%for i = 1:m;
+%    _Yi = -y(i)*log(sigmoid((theta')*X(i,:)'));
+%    _1_Yi = (1-y(i))*log(1-sigmoid((theta')*X(i,:)'));
+%    step_iR += _Yi - _1_Yi;
+%    end
+%for i = 2:(size(theta,1));
+%    step_jThe += theta(i,1).^2; 
+%    end
+%J = (1/m)*step_iR + (lambda/(2*m))*step_jThe;
 
+%   Vectorized implementation for cost function 
+_Yi_sum = -(y).*log(sigmoid(X*theta));
+_1_Yi_sum = (1-y).*log(1-sigmoid(X*theta));
+% '.^2' for element-wise power op.
+_regu = sum(theta(2:end,:).^2);
+J = (1/m)*(sum(_Yi_sum - _1_Yi_sum)) + (lambda/(2*m))*(_regu);
 
+% Non-Vectorized implementation for cost function 
+%for j = 1:size(X,2);
+%    gradJ_sum = 0;
+%    regValue = 0;
+%    for i = 1:m;
+%        gradJ_sum += (sigmoid((theta')*X(i,:)')-y(i))*X(i,j);       
+%        end
+%    if j > 1
+%        regValue = (lambda*theta(j,1))/m;
+%        endif 
+%    grad(j) = (1/m)*(gradJ_sum) + regValue;
+%    end
 
-
-
-
-
+%Vectorized implementation for cost function 
+_zerod_theta = theta;
+_zerod_theta(1) = 0;
+% Calculating beta for comfortable writing for grads calcs.
+_beta_i = sigmoid(X*theta) - y;
+grad = ((1/m)*X'*_beta_i) + ((lambda/m)*_zerod_theta);
 
 % =============================================================
 
