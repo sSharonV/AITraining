@@ -21,9 +21,25 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+%adds first column of '1' to X
+X = [ones(m,1) X];
 
+for i=1:m;
+    %  a1 is column-vector of the original input (TrainingExample = i)
+    a1 = X(i,:)';
+    % we need to compute column-vector from theta(i,0)*x0 + theta(i,1)*x1...
+    % for 1=<i<=25
+    z2 = Theta1*a1;
+    a2 = [1; sigmoid(z2)];
 
+    % to calculate a3, we need z3 first
+    z3 = Theta2*a2;
+    a3 = sigmoid(z3);
 
+    % find max in column-vector
+    [a, b] = max(a3, [], 1);
+    p(i) = b;
+    end
 
 
 
