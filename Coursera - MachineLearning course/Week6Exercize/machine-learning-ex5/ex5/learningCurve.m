@@ -53,9 +53,16 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
+for i = 1:m
+    X_i = X(1:i, :);
+    Y_i = y(1:i);
 
+    theta = trainLinearReg(X_i, Y_i, lambda); % computing the optimal thetas for given i's exmamples
 
+    error_train(i) = linearRegCostFunction(X_i, Y_i, theta, 0); % using training set
+    error_val(i) = linearRegCostFunction(Xval, yval, theta, 0); % using cross-validation set
 
+    end
 
 
 
