@@ -15,10 +15,12 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
+X_poly(:,1) = X;    % first column means power of '1' (can be included in for-loop)
 
-
-
-
+for i = 2:p
+    %   instead of using Power function, we can use the last calculated power for the current ones
+    X_poly(:,i) = X .* X_poly(:,i-1);
+    end
 
 % =========================================================================
 

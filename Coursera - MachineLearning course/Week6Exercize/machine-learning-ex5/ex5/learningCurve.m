@@ -63,9 +63,6 @@ for i = 1:m
     error_val(i) = linearRegCostFunction(Xval, yval, theta, 0); % using cross-validation set
 
     end
-
-
-
 % -------------------------------------------------------------
 
 % =========================================================================
