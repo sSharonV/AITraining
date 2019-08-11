@@ -23,12 +23,26 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+%   Defining the values for further tests
+values = [0.01 0.03 0.1 0.3 1 3 10 30];
 
+min_err = 1;
 
-
-
-
-
+for i = 1:8;
+    for j = 1:8;
+        t_C = values(i);
+        t_Sig = values(j);
+        %   Training svm with gaussian kernel (for every i[C], check all j[Sigma])
+        model = svmTrain(X, y, t_C, @(x1, x2) gaussianKernel(x1, x2, t_Sig));
+        predictions = svmPredict(model, Xval);
+        err = mean(double(predictions ~= yval));
+        %   Capture the pair [C,Sigma] which minimizes the error with current model
+        if err < min_err
+            C = t_C;
+            sigma = t_Sig;
+            min_err = err;
+            end 
+        end
+    end
 % =========================================================================
-
 end

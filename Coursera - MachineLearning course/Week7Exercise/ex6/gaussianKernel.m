@@ -16,10 +16,12 @@ sim = 0;
 %
 %
 
+%   Way1 - calculatig the normal by formula
+%_sigma((x1-x2)'*(x1-x2));           %   Matrix multiplication instaed of for loop
+%sim = exp(-_sigma/(2*(sigma^2)));
 
-
-
-
+%   Way2 - calculating the normal with library
+sim = exp(-(norm(x1-x2)^2)/(2*(sigma^2)));
 
 % =============================================================
     
